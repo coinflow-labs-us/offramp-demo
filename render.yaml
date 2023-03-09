@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: example-nft-merchant
+    name: example-offramp-merchant
     env: static
     branch: main
     buildCommand: npm ci && npm run build
