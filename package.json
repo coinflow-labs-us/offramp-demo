@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@coinflowlabs/react": "^1.1.2",
+    "@phantasia/nft-store-interface": "^2.0.8",
     "@solana/spl-token": "^0.3.7",
     "@solana/web3.js": "^1.73.2",
     "@web3auth/base": "^4.6.0",
