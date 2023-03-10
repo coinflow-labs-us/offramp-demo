@@ -57,10 +57,11 @@ export function WalletContextProvider({children}: {children: ReactNode}) {
       if (!provider) {
         throw new Error('provider not initialized yet');
       }
+      await connection?.simulateTransaction(transaction).then((res) => console.log("Simulation successful", {res})).catch(e => console.error(e));
       const rpc = new RPC(provider);
       return await rpc.sendTransaction(transaction);
     },
-    [provider]
+    [connection, provider]
   );
 
   const signTransaction = useCallback(

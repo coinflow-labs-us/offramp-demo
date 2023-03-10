@@ -27,6 +27,7 @@ export function DirectPurchaseForm() {
       </div>
       <HorizontalDivider className={'my-8'} />
       <div className="flex-col w-full">
+        {publicKey?.toBase58()}
         <HorizontalDivider className={'my-8'} />
       </div>
       <div className={'flex flex-col items-center justify-center self-end'}>
