@@ -3,7 +3,7 @@ services:
     name: example-offramp-merchant
     env: static
     branch: main
-    buildCommand: npm i && npm run build
+    buildCommand: npm ci && npm run build
     staticPublishPath: build
     routes:
       - type: rewrite
