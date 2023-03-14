@@ -57,11 +57,10 @@ export function WalletContextProvider({children}: {children: ReactNode}) {
       if (!provider) {
         throw new Error('provider not initialized yet');
       }
-      await connection?.simulateTransaction(transaction).then((res) => console.log("Simulation successful", {res})).catch(e => console.error(e));
       const rpc = new RPC(provider);
       return await rpc.sendTransaction(transaction);
     },
-    [connection, provider]
+    [provider]
   );
 
   const signTransaction = useCallback(
@@ -124,15 +123,15 @@ export function WalletContextProvider({children}: {children: ReactNode}) {
     setProvider(web3authProvider);
   };
 
-  useEffect(() => {
-    const getAccounts = async () => {
-      if (!provider) {
-        throw new Error('provider not initialized yet');
-      }
-      const rpc = new RPC(provider);
-      return await rpc.getAccounts();
-    };
+  const getAccounts = async () => {
+    if (!provider) {
+      throw new Error('provider not initialized yet');
+    }
+    const rpc = new RPC(provider);
+    return await rpc.getAccounts();
+  };
 
+  useEffect(() => {
     if (!provider) {
       setPublicKey(null);
       return;

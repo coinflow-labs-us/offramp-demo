@@ -2,6 +2,7 @@ import React, {ReactNode} from 'react';
 import './App.css';
 import {useWallet, WalletContextProvider} from './wallet/Wallet';
 import {BrowserRouter} from 'react-router-dom';
+import ShopCoinflowContextProvider from './context/ShopCoinflowContext';
 import {CoinflowForm} from './CoinflowForm';
 import {DirectPurchaseForm} from './DirectPurchaseForm';
 import {Button} from 'antd';
@@ -18,10 +19,12 @@ function InputPanel() {
   const {publicKey} = useWallet();
 
   return (
+    <ShopCoinflowContextProvider>
       <div className={'w-full h-full flex flex-center'}>
         <DirectPurchaseForm />
         {!publicKey ? <LoginForm /> : <CoinflowForm />}
       </div>
+    </ShopCoinflowContextProvider>
   );
 }
 
@@ -35,7 +38,7 @@ function LoginForm() {
         size={'large'}
         style={{background: '#73c2fb'}}
       >
-        Login to Withdraw
+        Login to Purchase
       </Button>
     </div>
   );
